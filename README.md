@@ -1,3 +1,7 @@
+# Intro
+
+Based on [The Primeagen's Video](https://www.youtube.com/watch?v=w7i4amO_zaE)
+
 # Setup
 
 ## Windows
