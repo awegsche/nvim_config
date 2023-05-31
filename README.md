@@ -2,10 +2,19 @@
 
 ## Windows
 
-Clone this repo into
+- Clone this repo into
 
-```bash
+```ps
 ~/AppData/Local/nvim
 ```
 
-run `:PackerSync` to install packages.
+- Install [Packer](https://github.com/wbthomason/packer.nvim) following the instructions in their
+`README`:
+
+```ps
+git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
+```
+
+- Run `:PackerSync` to install packages.
+
+I had to run this several times to get everything installed
