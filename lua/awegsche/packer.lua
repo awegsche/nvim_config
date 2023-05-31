@@ -7,8 +7,10 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    use({ 'rose-pine/neovim', as = 'rose-pine' })
-    vim.cmd('colorscheme rose-pine')
+    ---- Color schemes -----------------------------------------------------------------------------
+    use { 'rose-pine/neovim', as = 'rose-pine' }
+    use 'sainnhe/gruvbox-material'
+    use {'catppuccin/nvim', as = 'catpuccin'}
 
     ---- The basics --------------------------------------------------------------------------------
     use {
