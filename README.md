@@ -6,6 +6,9 @@ Based on [The Primeagen's Video](https://www.youtube.com/watch?v=w7i4amO_zaE)
 
 ## Windows
 
+At the moment I recommend [neovide](https://neovide.dev/), since the bundled `nvim-qt` was
+very laggy and became slow very fast.
+
 - Clone this repo into
 
 ```ps
