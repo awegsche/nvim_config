@@ -1,5 +1,5 @@
 if exists(':GuiFont')
-	GuiFont Iosevka\ Term\ SS05:h8
+	GuiFont Iosevka\ Term\ SS05:h12
 endif
 
 GuiWindowOpacity 0.9 
