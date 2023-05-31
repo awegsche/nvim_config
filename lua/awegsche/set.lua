@@ -10,7 +10,13 @@ vim.opt.smartindent = true
 
 vim.opt.wrap = false
 vim.opt.swapfile = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+
+-- win10 doesn't have $HOME set, it's called $HOMEPATH
+if vim.fn.has('win32') then
+    vim.opt.undodir = os.getenv("HOMEPATH") .. "/.vim/undodir"
+else
+    vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+end
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false
