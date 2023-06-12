@@ -32,5 +32,6 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "100"
 
-vim.o.guifont = "Iosevka Term SS05:h12"
+vim.o.guifont = "Iosevka Nerd Font Mono:h12:#e-subpixelantialias:#h-full"
+vim.opt.linespace = 2
 
