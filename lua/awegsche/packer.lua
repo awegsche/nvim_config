@@ -51,7 +51,36 @@ return require('packer').startup(function(use)
         }
     }
 
+    -- use('simrat39/inlay-hints.nvim')
+    use('lvimuser/lsp-inlayhints.nvim')
+
     ---- Codeium -----------------------------------------------------------------------------------
     use('Exafunction/codeium.vim')
+
+    use('ixru/nvim-markdown')
+
+
+    ---- Org ---------------------------------------------------------------------------------------
+    use {
+    "nvim-neorg/neorg",
+    config = function()
+        require('neorg').setup {
+            load = {
+                ["core.defaults"] = {}, -- Loads default behaviour
+                ["core.concealer"] = {}, -- Adds pretty icons to your documents
+                ["core.dirman"] = { -- Manages Neorg workspaces
+                    config = {
+                        workspaces = {
+                            notes = "~/notes",
+                        },
+                    },
+                },
+            },
+        }
+    end,
+    run = ":Neorg sync-parsers",
+    requires = "nvim-lua/plenary.nvim",
+}
+
 end)
 
