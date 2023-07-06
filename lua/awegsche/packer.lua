@@ -54,13 +54,31 @@ return require('packer').startup(function(use)
     -- use('simrat39/inlay-hints.nvim')
     use('lvimuser/lsp-inlayhints.nvim')
 
-    ---- Codeium -----------------------------------------------------------------------------------
-    use('Exafunction/codeium.vim')
+    use('ziglang/zig.vim')
+
+    ---- Artificial Intelligence -------------------------------------------------------------------
+    -- use('Exafunction/codeium.vim')
+    use({
+        "jackMort/ChatGPT.nvim",
+        config = function ()
+            require("chatgpt").setup({
+                api_key_cmd = "pass gpt"
+            })
+        end,
+        requires = {
+            "MunifTanjim/nui.nvim",
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim"
+        }
+    })
 
     use('ixru/nvim-markdown')
 
 
     ---- Org ---------------------------------------------------------------------------------------
+    --
+    use('folke/zen-mode.nvim')
+
     use {
     "nvim-neorg/neorg",
     config = function()
@@ -75,6 +93,13 @@ return require('packer').startup(function(use)
                         },
                     },
                 },
+                ["core.completion"] = {config = {engine = "nvim-cmp"}},
+                ["core.integrations.nvim-cmp"] = {config = {sources = {name = "neorg"}}},
+                ["core.export"] = {},
+                ["core.export.markdown"] = {},
+                ["core.presenter"] = {config = { zen_mode = "zen-mode" }},
+                ["core.ui"] = {},
+                -- ["core.ui.calendar"] = {},
             },
         }
     end,
