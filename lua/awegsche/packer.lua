@@ -8,7 +8,7 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     ---- Color schemes -----------------------------------------------------------------------------
-    use { 'rose-pine/neovim', as = 'rose-pine' }
+    -- use { 'rose-pine/neovim', as = 'rose-pine' }
     use 'sainnhe/gruvbox-material'
     use {'catppuccin/nvim', as = 'catpuccin'}
 
