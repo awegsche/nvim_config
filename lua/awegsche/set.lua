@@ -32,6 +32,11 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "100"
 
-vim.o.guifont = "Iosevka Nerd Font Mono:h12:#e-subpixelantialias:#h-full"
+
+ if vim.fn.has('win32') == 1 then
+     vim.o.guifont = "IosevkaTerm Nerd Font Mono:h12:#e-subpixelantialias:#h-full"
+ else
+     vim.o.guifont = "IosevkaTerm NFM:h12:#e-subpixelantialias:#h-full"
+end
 vim.opt.linespace = 2
 
