@@ -80,32 +80,47 @@ return require('packer').startup(function(use)
     use('folke/zen-mode.nvim')
 
     use {
-    "nvim-neorg/neorg",
-    config = function()
-        require('neorg').setup {
-            load = {
-                ["core.defaults"] = {}, -- Loads default behaviour
-                ["core.concealer"] = {}, -- Adds pretty icons to your documents
-                ["core.dirman"] = { -- Manages Neorg workspaces
-                    config = {
-                        workspaces = {
-                            notes = "~/notes",
+        "nvim-neorg/neorg",
+        config = function()
+            require('neorg').setup {
+                load = {
+                    ["core.defaults"] = {}, -- Loads default behaviour
+                    ["core.concealer"] = {}, -- Adds pretty icons to your documents
+                    ["core.dirman"] = { -- Manages Neorg workspaces
+                        config = {
+                            workspaces = {
+                                notes = "~/notes",
+                                example_gtd = "/media/awegsche/HDD1/notes/example_workspaces/gtd",
+                            },
                         },
                     },
+                    ["core.completion"] = {config = {engine = "nvim-cmp"}},
+                    ["core.integrations.nvim-cmp"] = {config = {sources = {name = "neorg"}}},
+                    ["core.integrations.telescope"] = {},
+                    ["core.export"] = {},
+                    ["core.export.markdown"] = {},
+                    ["core.presenter"] = {config = { zen_mode = "zen-mode" }},
+                    ["core.ui"] = {},
+                    ["core.ui.calendar"] = {},
+                    ["external.exec"] = {},
                 },
-                ["core.completion"] = {config = {engine = "nvim-cmp"}},
-                ["core.integrations.nvim-cmp"] = {config = {sources = {name = "neorg"}}},
-                ["core.export"] = {},
-                ["core.export.markdown"] = {},
-                ["core.presenter"] = {config = { zen_mode = "zen-mode" }},
-                ["core.ui"] = {},
-                -- ["core.ui.calendar"] = {},
-            },
-        }
-    end,
-    run = ":Neorg sync-parsers",
-    requires = "nvim-lua/plenary.nvim",
-}
+            }
+        end,
+        run = ":Neorg sync-parsers",
+        requires = {"nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope", "laher/neorg-exec"},
+    }
+
+    use {
+        'renerocksai/calendar-vim'
+    }
+
+    use {
+        'renerocksai/telekasten.nvim',
+        requires = {'nvim-telescope/telescope.nvim'}
+    }
+
+    ---- Python debugging --------------------------------------------------------------------------
+    use 'mfussenegger/nvim-dap-python'
 
 end)
 
