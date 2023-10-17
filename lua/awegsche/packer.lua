@@ -57,7 +57,7 @@ return require('packer').startup(function(use)
     use('ziglang/zig.vim')
 
     ---- Artificial Intelligence -------------------------------------------------------------------
-    -- use('Exafunction/codeium.vim')
+    use('Exafunction/codeium.vim')
     use({
         "jackMort/ChatGPT.nvim",
         config = function ()
