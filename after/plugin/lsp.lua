@@ -127,3 +127,7 @@ local lspconfig = require('lspconfig')
     lspconfig.zls.setup {
         on_attach = on_attach,
     }
+
+-- ---- D ------------------------------------------------------------------------------------------
+require'lspconfig'.serve_d.setup{}
+
