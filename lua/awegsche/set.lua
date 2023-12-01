@@ -40,3 +40,5 @@ vim.opt.colorcolumn = "100"
 end
 vim.opt.linespace = 2
 
+-- neorg settings
+vim.opt.conceallevel = 2
