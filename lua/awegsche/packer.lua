@@ -30,6 +30,7 @@ return require('packer').startup(function(use)
     }
 
     ---- LSP ---------------------------------------------------------------------------------------
+
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -50,6 +51,8 @@ return require('packer').startup(function(use)
             {'L3MON4D3/LuaSnip'},     -- Required
         }
     }
+
+    use('mhartington/formatter.nvim')
 
     -- use('simrat39/inlay-hints.nvim')
     use('lvimuser/lsp-inlayhints.nvim')
