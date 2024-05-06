@@ -58,6 +58,28 @@ end)
 
 lsp.setup()
 
+
+-- ---- Zig ----------------------------------------------------------------------------------------
+local lspconfig = require('lspconfig')
+    local on_attach = function(_, bufnr)
+        vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+        require('completion').on_attach()
+    end
+    lspconfig.clangd.setup {
+        cmd={"clangd",
+            "--background-index",
+            "--suggest-missing-includes",
+            "--clang-tidy",
+            "--clang-tidy-checks=*",
+            "--all-scopes-completion",
+            "--header-insertion-decorators",
+            "--header-insertion=iwyu",
+            "--pch-storage=memory",
+            "--completion-style=detailed",
+            "--cross-file-rename"},
+        on_attach = on_attach
+    }
+
 -- ---- MadX (Debugging) ---------------------------------------------------------------------------
 
 function StartMadx()
@@ -105,3 +127,7 @@ local lspconfig = require('lspconfig')
     lspconfig.zls.setup {
         on_attach = on_attach,
     }
+
+-- ---- D ------------------------------------------------------------------------------------------
+require'lspconfig'.serve_d.setup{}
+
