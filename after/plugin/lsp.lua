@@ -1,15 +1,15 @@
+-- -------------------------------------------------------------------------------------------------
+-- ---- setup mason --------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------------------
+--
+require("mason").setup()
+
+-- -------------------------------------------------------------------------------------------------
+-- ---- basic setup --------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------------------
 local lsp = require('lsp-zero')
 
-
--- (Optional) Configure lua language server for neovim
---require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
---
 lsp.preset("recommended")
-
-lsp.ensure_installed({
-	'rust_analyzer',
-	'clangd'
-})
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
@@ -22,10 +22,6 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
-
-lsp.setup_nvim_cmp({
-    mapping = cmp_mappings
-})
 
 lsp.set_preferences({
     suggest_lsp_servers = false,
@@ -58,9 +54,13 @@ end)
 
 lsp.setup()
 
+-- -------------------------------------------------------------------------------------------------
+-- ---- Setup Language Servers ---------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------------------
+--
+local lspconfig = require('lspconfig')
 
 -- ---- Zig ----------------------------------------------------------------------------------------
-local lspconfig = require('lspconfig')
 
 lspconfig.zls.setup{}
 
@@ -80,6 +80,9 @@ lspconfig.clangd.setup {
     on_attach = on_attach
 }
 
+-- ---- Rust ---------------------------------------------------------------------------------------
+lspconfig.rust_analyzer.setup({})
+
 -- ---- MadX (Debugging) ---------------------------------------------------------------------------
 
 function StartMadx()
@@ -95,7 +98,7 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
 })
 
 -- ---- Lua ----------------------------------------------------------------------------------------
-require'lspconfig'.lua_ls.setup {
+lspconfig.lua_ls.setup {
   settings = {
     Lua = {
       runtime = {
@@ -131,3 +134,25 @@ local lspconfig = require('lspconfig')
 -- ---- D ------------------------------------------------------------------------------------------
 require'lspconfig'.serve_d.setup{}
 
+
+-- ---- GDScript -----------------------------------------------------------------------------------
+require("lspconfig")["gdscript"].setup({
+    name = "godot",
+    cmd = {"ncat", "127.0.0.1", "6005"},
+})
+
+local dap = require("dap")
+dap.adapters.godot = {
+    type = "server",
+    host = "127.0.0.1",
+    port = 6006,
+}
+dap.configurations.gdscript = {
+    {
+        type = "godot",
+        request = "launch",
+        name = "Launch scene",
+        program = "${workspaceFolder}",
+        launch_scene = true,
+    },
+}
