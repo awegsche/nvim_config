@@ -34,7 +34,7 @@ vim.opt.colorcolumn = "100"
 
 
  if vim.fn.has('win32') == 1 then
-     vim.o.guifont = "IosevkaTerm Nerd Font Mono:h12:#e-subpixelantialias:#h-full"
+     vim.o.guifont = "Iosevka Term:h12:#e-subpixelantialias:#h-full"
  else
      vim.o.guifont = "IosevkaTerm NFM:h12:#e-subpixelantialias:#h-full"
 end

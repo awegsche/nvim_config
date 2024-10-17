@@ -174,3 +174,6 @@ dap.configurations.gdscript = {
         launch_scene = true,
     },
 }
+
+-- ---- Python -------------------------------------------------------------------------------------
+require'lspconfig'.pyright.setup{}
