@@ -20,6 +20,9 @@ else
 end
 vim.opt.undofile = true
 
+-- fix for orgmode links on windows
+vim.opt.shellslash = true
+
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
@@ -32,13 +35,16 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "100"
 
+if vim.g.neovide then
+    vim.opt.linespace = 1
+    vim.g.transparency = 1
+end
 
  if vim.fn.has('win32') == 1 then
      vim.o.guifont = "IosevkaTerm Nerd Font Mono:h12:#e-subpixelantialias:#h-full"
  else
      vim.o.guifont = "IosevkaTerm NFM:h12:#e-subpixelantialias:#h-full"
 end
-vim.opt.linespace = 2
 
 -- neorg settings
 vim.opt.conceallevel = 2
