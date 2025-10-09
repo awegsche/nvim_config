@@ -65,7 +65,7 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<leader>ff", function() vim.lsp.buf.format() end, opts)
 	vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 
-    require("lsp-inlayhints").on_attach(client, bufnr)
+    -- require("lsp-inlayhints").on_attach(client, bufnr)
 end)
 
 lsp.setup()
@@ -74,37 +74,37 @@ lsp.setup()
 -- ---- Setup Language Servers ---------------------------------------------------------------------
 -- -------------------------------------------------------------------------------------------------
 --
-local lspconfig = require('lspconfig')
+vim.lsp.enable('zls')
 
--- ---- Zig ----------------------------------------------------------------------------------------
+vim.lsp.enable('rust-analyzer')
+vim.lsp.config('rust-analyzer', {})
 
-lspconfig.zls.setup{}
+vim.lsp.enable('basedpyright')
+vim.lsp.config('basedpyright', {})
 
--- ---- C++ ----------------------------------------------------------------------------------------
-lspconfig.clangd.setup {
+vim.lsp.enable('clangd')
+vim.lsp.config('clangd', 
+{
     cmd={"clangd",
-        "--background-index",
-        "--suggest-missing-includes",
-        "--clang-tidy",
-        "--clang-tidy-checks=*",
-        "--all-scopes-completion",
-        "--header-insertion-decorators",
-        "--header-insertion=iwyu",
-        "--pch-storage=memory",
-        "--completion-style=detailed",
-        "--cross-file-rename"},
+    "--background-index",
+    "--suggest-missing-includes",
+    "--clang-tidy",
+    "--clang-tidy-checks=*",
+    "--all-scopes-completion",
+    "--header-insertion-decorators",
+    "--header-insertion=iwyu",
+    "--pch-storage=memory",
+    "--completion-style=detailed",
+    "--cross-file-rename"},
     on_attach = on_attach
-}
-
--- ---- Rust ---------------------------------------------------------------------------------------
-lspconfig.rust_analyzer.setup({})
+})
 
 -- ---- MadX (Debugging) ---------------------------------------------------------------------------
 
 function StartMadx()
     vim.lsp.start({
         name = "madx",
-        cmd = {"/media/awegsche/HDD1/rust/madxls/target/release/madxls"},
+        cmd = {"madxls"},
     })
 end
 
@@ -113,85 +113,3 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
     callback = StartMadx,
 })
 
--- ---- Lua ----------------------------------------------------------------------------------------
-lspconfig.lua_ls.setup {
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-}
-
--- ---- Zig ----------------------------------------------------------------------------------------
-local lspconfig = require('lspconfig')
-    local on_attach = function(_, bufnr)
-        vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-        require('completion').on_attach()
-    end
-    lspconfig.zls.setup {
-        on_attach = on_attach,
-    }
-
--- ---- D ------------------------------------------------------------------------------------------
-require'lspconfig'.serve_d.setup{}
-
--- ---- Json ---------------------------------------------------------------------------------------
-require'lspconfig'.jsonls.setup{}
-
--- ---- GDScript -----------------------------------------------------------------------------------
-require("lspconfig")["gdscript"].setup({
-    name = "godot",
-    cmd = {"ncat", "127.0.0.1", "6005"},
-})
-
-local dap = require("dap")
-dap.adapters.godot = {
-    type = "server",
-    host = "127.0.0.1",
-    port = 6006,
-}
-dap.configurations.gdscript = {
-    {
-        type = "godot",
-        request = "launch",
-        name = "Launch scene",
-        program = "${workspaceFolder}",
-        launch_scene = true,
-    },
-}
-
--- ---- Python -------------------------------------------------------------------------------------
-require'lspconfig'.pyright.setup{}
-
--- ---- JSON ---------------------------------------------------------------------------------------
-require'lspconfig'.cmake.setup{}
-
--- ---- Odin ---------------------------------------------------------------------------------------
-require'lspconfig'.ols.setup{}
-
--- ---- Java ---------------------------------------------------------------------------------------
-require'lspconfig'.jdtls.setup{}
-
--- ---- COBOL --------------------------------------------------------------------------------------
-require'lspconfig'.cobol_ls.setup{}
-
--- ---- LaTeX --------------------------------------------------------------------------------------
-require'lspconfig'.texlab.setup{}
-
--- ---- F# -----------------------------------------------------------------------------------------
-require'lspconfig'.fsautocomplete.setup{}
