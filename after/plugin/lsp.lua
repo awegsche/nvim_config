@@ -92,7 +92,9 @@ lspconfig.clangd.setup {
         "--header-insertion=iwyu",
         "--pch-storage=memory",
         "--completion-style=detailed",
-        "--cross-file-rename"},
+        "--cross-file-rename",
+        "--query-driver=cl",
+    },
     on_attach = on_attach
 }
 
@@ -104,7 +106,7 @@ lspconfig.rust_analyzer.setup({})
 function StartMadx()
     vim.lsp.start({
         name = "madx",
-        cmd = {"/media/awegsche/HDD1/rust/madxls/target/release/madxls"},
+        cmd = {"C:/Users/andiw/CERN/madxls/target/release/madxls"},
     })
 end
 
