@@ -32,6 +32,11 @@ local plugins = {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
+    {
+        'stevearc/oil.nvim',
+        opts = {},
+        dependencies = { "nvim-tree/nvim-web-devicons" }
+    },
 
     ---- LSP ---------------------------------------------------------------------------------------
     { 'VonHeikemen/lsp-zero.nvim',        branch = 'v3.x' },
