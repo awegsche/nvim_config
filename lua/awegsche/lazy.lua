@@ -74,26 +74,11 @@ local plugins = {
         dependencies = { "luarocks.nvim" },
         lazy = false,
         version = "*",
+    },
+    {
+        dir = "/home/Andreas.Wegscheider/Projects/vorg/vorg_plugin",
         config = function()
-            require("neorg").setup {
-                load = {
-                    ["core.defaults"] = {},
-                    ["core.concealer"] = {},
-                    ["core.export"] = {},
-                    ["core.summary"] = {},
-                    ["core.dirman"] = {
-                        config = {
-                            workspaces = {
-                                notes = "~/Dropbox/notes",
-                            },
-                            default_workspace = "notes",
-                        },
-                    },
-                },
-            }
-
-            vim.wo.foldlevel = 99
-            vim.wo.conceallevel = 2
+            require('vorg').setup()
         end,
     },
     -- {
