@@ -22,20 +22,47 @@ vim.opt.pumblend = 30
 
 
 ---- Setting colorscheme - enabling transparency accordingly ---------------------------------------
+---
+require("catppuccin").setup({
+    -- 1. Enable global transparency
+    transparent_background = true,
 
-function ColorMyPencils(color) -- Primeagen, don't ask
-    color = color or "catppuccin"
+    -- 2. (Optional) Force specific elements to be transparent too
+    styles = { 
+        comments = { "italic" },
+        conditionals = { "italic" },
+        loops = {},
+        functions = {},
+        keywords = {},
+        strings = {},
+        variables = {},
+        numbers = {},
+        booleans = {},
+        properties = {},
+        types = {},
+        operators = {},
+        -- Make sidebars (like NvimTree) and floating windows transparent
+        sidebars = "transparent", 
+        floats = "transparent",   
+    },
+})
 
-    vim.opt.background = "dark"
-    vim.cmd.colorscheme(color)
-	--vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	--vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-	vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
-end
+-- 3. Load the colorscheme
+vim.cmd.colorscheme "catppuccin-latte"
 
-function ColorMyPencilsLight(color)
-    ColorMyPencils(color)
-    vim.opt.background = "light"
-end
-
-ColorMyPencils('catppuccin-frappe')
+-- function ColorMyPencils(color) -- Primeagen, don't ask
+--     color = color or "catppuccin"
+-- 
+--     vim.opt.background = "dark"
+--     vim.cmd.colorscheme(color)
+-- 	--vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+-- 	--vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+-- 	vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
+-- end
+-- 
+-- function ColorMyPencilsLight(color)
+--     ColorMyPencils(color)
+--     vim.opt.background = "light"
+-- end
+-- 
+-- ColorMyPencils('catppuccin-frappe')
