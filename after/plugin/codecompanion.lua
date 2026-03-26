@@ -1,0 +1,11 @@
+-- require("codecompanion").setup({
+--   strategies = {
+--     chat = {
+--       adapter = "anthropic",
+--       model = "claude-sonnet-4"
+--     },
+--   },
+--   opts = {
+--     log_level = "DEBUG",
+--   },
+-- })

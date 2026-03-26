@@ -139,13 +139,86 @@ local plugins = {
     "vim-scripts/jcl.vim",
 
     ---- AI ----------------------------------------------------------------------------------------
-    "Exafunction/codeium.vim",
+    -- "Exafunction/codeium.vim",
+    -- {
+    --     "Exafunction/codeium.nvim",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --         "hrsh7th/nvim-cmp",
+    --     }
+    -- },
+    -- {
+    --     "olimorris/codecompanion.nvim",
+    --     opts = {},
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --     },
+    -- },
+
+    ---- Avante (Claude via Portkey) ----------------------------------------------------------------
     {
-        "Exafunction/codeium.nvim",
+        "yetone/avante.nvim",
+        event = "VeryLazy",
+        version = false,
+        build = "make",
         dependencies = {
             "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            "nvim-tree/nvim-web-devicons",
             "hrsh7th/nvim-cmp",
-        }
+            {
+                "MeanderingProgrammer/render-markdown.nvim",
+                opts = {
+                    -- Only render in Avante buffers, not regular markdown
+                    file_types = { "Avante" },
+                    -- Use ASCII-friendly settings
+                    bullet = {
+                        icons = { '-', '*', '+', '>' },
+                    },
+                    checkbox = {
+                        unchecked = { icon = '[ ]' },
+                        checked = { icon = '[x]' },
+                        custom = {
+                            todo = { raw = '[-]', rendered = '[-]' },
+                        },
+                    },
+                    heading = {
+                        -- Use simple # markers instead of icons
+                        icons = { '# ', '## ', '### ', '#### ', '##### ', '###### ' },
+                    },
+                    code = {
+                        -- Simple code block markers
+                        left_pad = 1,
+                        right_pad = 1,
+                        sign = false,
+                        below = '',
+                        above = '',
+                    },
+                    dash = {
+                        icon = '-',
+                    },
+                    quote = {
+                        icon = '>',
+                    },
+                    -- Disable fancy link rendering
+                    link = {
+                        enabled = false,
+                    },
+                    -- Disable inline code highlighting that might cause issues
+                    pipe_table = {
+                        enabled = true,
+                        cell = 'raw',
+                    },
+                },
+                ft = { "Avante" },
+            },
+        },
+    },
+
+    ---- Minuet (AI Tab Completions via Portkey) -----------------------------------------------------
+    {
+        "milanglacier/minuet-ai.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
     },
 }
 
