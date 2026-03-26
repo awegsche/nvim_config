@@ -86,16 +86,18 @@ vim.lsp.enable('clangd')
 vim.lsp.config('clangd', 
 {
     cmd={"clangd",
-    "--background-index",
-    "--suggest-missing-includes",
-    "--clang-tidy",
-    "--clang-tidy-checks=*",
-    "--all-scopes-completion",
-    "--header-insertion-decorators",
-    "--header-insertion=iwyu",
-    "--pch-storage=memory",
-    "--completion-style=detailed",
-    "--cross-file-rename"},
+        "--background-index",
+        "--suggest-missing-includes",
+        "--clang-tidy",
+        "--clang-tidy-checks=*",
+        "--all-scopes-completion",
+        "--header-insertion-decorators",
+        "--header-insertion=iwyu",
+        "--pch-storage=memory",
+        "--completion-style=detailed",
+        "--cross-file-rename",
+        "--query-driver=cl",
+    },
     on_attach = on_attach
 })
 
@@ -104,7 +106,7 @@ vim.lsp.config('clangd',
 function StartMadx()
     vim.lsp.start({
         name = "madx",
-        cmd = {"madxls"},
+        cmd = {"C:/Users/andiw/CERN/madxls/target/release/madxls"},
     })
 end
 
