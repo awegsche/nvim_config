@@ -111,8 +111,8 @@ avante.setup({
 
     -- Suggestion throttling (to control API costs)
     suggestion = {
-        debounce = 600,   -- Wait 600ms after typing stops before requesting
-        throttle = 600,   -- Minimum 600ms between requests
+        debounce = 300,   -- Wait 300ms after typing stops before requesting
+        throttle = 600,   -- Minimum 900ms between requests
     },
 
     -- Window settings

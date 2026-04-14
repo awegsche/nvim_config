@@ -41,8 +41,8 @@ minuet.setup({
     provider = "claude",
 
     -- Throttle and debounce to control API costs
-    throttle = 1000, -- Only send request every 1000ms
-    debounce = 500,  -- Wait 500ms after typing stops
+    throttle = 800, -- Only send request every 1000ms
+    debounce = 200,  -- Wait 500ms after typing stops
     request_timeout = 3, -- 3 second timeout
 
     -- Virtual text (ghost text) configuration
@@ -75,7 +75,7 @@ minuet.setup({
             -- Use Portkey gateway instead of direct Anthropic API
             end_point = "https://api.portkey.ai/v1/messages",
             -- Use Haiku for fast, cheap completions
-            model = "claude-haiku-4-5",
+            model = "claude-haiku-4-5-20251001",
             -- API key for x-api-key header (Portkey passes this through)
             api_key = "ANTHROPIC_API_KEY",
             -- Max tokens for completion
