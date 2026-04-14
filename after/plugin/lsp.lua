@@ -74,10 +74,7 @@ lsp.setup()
 -- ---- Setup Language Servers ---------------------------------------------------------------------
 -- -------------------------------------------------------------------------------------------------
 --
-vim.lsp.enable('zls')
-
-vim.lsp.enable('rust-analyzer')
-vim.lsp.config('rust-analyzer', {})
+-- vim.lsp.enable('zls')
 
 vim.lsp.enable('basedpyright')
 vim.lsp.config('basedpyright', {})
