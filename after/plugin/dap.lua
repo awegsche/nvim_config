@@ -17,7 +17,6 @@ dap.adapters.codelldb = {
     name = 'codelldb'
 }
 
-require('dap.ext.vscode').load_launchjs(nil, {})
 
 dap.configurations.cpp = {
     {
