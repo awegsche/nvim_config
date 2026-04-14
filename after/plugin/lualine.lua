@@ -66,7 +66,6 @@ end
 -- ── Theme: auto-tracks catppuccin flavor (latte/mocha/etc.), falls back to 'auto'
 local function get_theme()
   local name = vim.g.colors_name or ''
-  if name:match('^catppuccin') then return 'catppuccin' end
   local ok = pcall(require, 'lualine.themes.' .. name)
   return ok and name or 'auto'
 end
