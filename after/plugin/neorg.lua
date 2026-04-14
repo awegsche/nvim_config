@@ -1,3 +1,6 @@
+local ok, _ = pcall(require, "neorg")
+if not ok then return end
+
 require("neorg").setup {
     load = {
         ["core.defaults"] = {},

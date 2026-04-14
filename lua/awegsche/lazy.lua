@@ -11,6 +11,18 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local disabled_plugins = require("awegsche.disabled_plugins")
+local function apply_disabled(specs)
+    return vim.tbl_map(function(spec)
+        local id = type(spec) == "string" and spec or (spec[1] or spec.dir or "")
+        local name = id:match("([^/]+)$") or id
+        if vim.tbl_contains(disabled_plugins, name) then
+            if type(spec) == "string" then return { spec, enabled = false } end
+            return vim.tbl_extend("force", spec, { enabled = false })
+        end
+        return spec
+    end, specs)
+end
 
 local plugins = {
     ---- Colour schemes ----------------------------------------------------------------------------
@@ -23,7 +35,7 @@ local plugins = {
         "nvim-telescope/telescope-file-browser.nvim",
         dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
     },
-    { 'nvim-treesitter/nvim-treesitter',  build = ':TSUpdate' },
+    { 'nvim-treesitter/nvim-treesitter',  build = ':TSUpdate', branch = "main" },
     'nvim-treesitter/nvim-treesitter-context',
     'mbbill/undotree',
     'tpope/vim-fugitive',
@@ -56,6 +68,10 @@ local plugins = {
     {
         "danymat/neogen",
         config = true,
+    },
+
+    {
+        "mrcjkb/rustaceanvim",
     },
 
     ---- Org mode ----------------------------------------------------------------------------------
@@ -211,4 +227,4 @@ local plugins = {
     },
 }
 
-require("lazy").setup(plugins, opts)
+require("lazy").setup(apply_disabled(plugins), opts)
