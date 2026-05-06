@@ -4,6 +4,11 @@ if not ok then return end
 require("neorg").setup {
     load = {
         ["core.defaults"] = {},
+        ["core.integrations.treesitter"] = {
+            config = {
+                configure_parsers = false,
+            },
+        },
         ["core.concealer"] = {
             config = {
                 icon_preset = "basic", -- Use basic ASCII preset

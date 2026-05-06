@@ -27,6 +27,7 @@ end
 local plugins = {
     ---- Colour schemes ----------------------------------------------------------------------------
     'sainnhe/gruvbox-material',
+    {'ember-theme/nvim', name = 'ember'},
     { 'catppuccin/nvim',      as = 'catpuccin' },
     { 'folke/tokyonight.nvim' },
     'slugbyte/lackluster.nvim',

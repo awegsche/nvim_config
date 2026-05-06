@@ -20,49 +20,35 @@ vim.g.neovide_floating_blur_amount_y = 10.0
 vim.opt.winblend = 30
 vim.opt.pumblend = 30
 
-
----- Setting colorscheme - enabling transparency accordingly ---------------------------------------
----
-require("catppuccin").setup({
-    -- 1. Enable global transparency
-    transparent_background = true,
-
-    -- 2. (Optional) Force specific elements to be transparent too
-    styles = { 
-        comments = { "italic" },
-        conditionals = { "italic" },
-        loops = {},
-        functions = {},
-        keywords = {},
-        strings = {},
-        variables = {},
-        numbers = {},
-        booleans = {},
-        properties = {},
-        types = {},
-        operators = {},
-        -- Make sidebars (like NvimTree) and floating windows transparent
-        sidebars = "transparent", 
-        floats = "transparent",   
-    },
+require("ember").setup({
+    variant = "ember", -- "ember" | "ember-soft" | "ember-light"
 })
 
--- 3. Load the colorscheme
-vim.cmd.colorscheme "catppuccin-latte"
-
--- function ColorMyPencils(color) -- Primeagen, don't ask
---     color = color or "catppuccin"
+-- ---- Setting colorscheme - enabling transparency accordingly ---------------------------------------
+-- ---
+-- require("catppuccin").setup({
+--     -- 1. Enable global transparency
+--     transparent_background = true,
 -- 
---     vim.opt.background = "dark"
---     vim.cmd.colorscheme(color)
--- 	--vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
--- 	--vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
--- 	vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
--- end
+--     -- 2. (Optional) Force specific elements to be transparent too
+--     styles = { 
+--         comments = { "italic" },
+--         conditionals = { "italic" },
+--         loops = {},
+--         functions = {},
+--         keywords = {},
+--         strings = {},
+--         variables = {},
+--         numbers = {},
+--         booleans = {},
+--         properties = {},
+--         types = {},
+--         operators = {},
+--         -- Make sidebars (like NvimTree) and floating windows transparent
+--         sidebars = "transparent", 
+--         floats = "transparent",   
+--     },
+-- })
 -- 
--- function ColorMyPencilsLight(color)
---     ColorMyPencils(color)
---     vim.opt.background = "light"
--- end
--- 
--- ColorMyPencils('catppuccin-frappe')
+-- -- 3. Load the colorscheme
+vim.cmd.colorscheme "ember-light"
