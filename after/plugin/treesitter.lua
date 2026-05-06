@@ -3,7 +3,7 @@ if not ok then return end
 
 require('nvim-treesitter').setup({
     ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "rust", "cpp" },
-    auto_install = true,
+    auto_install = false,
 })
 
 vim.filetype.add({
