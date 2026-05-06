@@ -43,7 +43,7 @@ avante.setup({
     provider = "portkey-claude",
 
     -- Use Haiku for auto-suggestions (faster and cheaper for high-frequency completions)
-    auto_suggestions_provider = "portkey-claude-haiku",
+    auto_suggestions_provider = "portkey-claude",
 
     -- Default interaction mode
     mode = "agentic",
